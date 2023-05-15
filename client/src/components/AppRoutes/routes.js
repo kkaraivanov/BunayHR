@@ -37,7 +37,7 @@ export default [
         },
         key: "dashboard",
         component: <Dashboard />, // example for page component Dashboard
-        protected: false,
+        protected: true,
         role: ''
     }
 ]

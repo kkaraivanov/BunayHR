@@ -1,12 +1,22 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import routes from './routes';
 
+import AuthorizedRoutes from './AuthorizedRoutes';
+
 const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
-        const { items } = route;
+        const { items, component } = route;
         const { path } = items;
 
-        return <Route path={path} element={route.component} key={route.key} />;
+        if (route.protected) {
+            return (
+                <Route key={route.key} element={<AuthorizedRoutes />}>
+                    <Route path={path} element={component} />
+                </Route>
+            );
+        }
+
+        return <Route path={path} element={component} key={route.key} />;
     });
 
 export default () => {
