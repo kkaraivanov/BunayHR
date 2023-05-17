@@ -8,7 +8,7 @@ const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
         const { items, component } = route;
         const { path } = items;
-console.log(items)
+
         if (route.protected) {
             return (
                 <Route key={route.key} element={<AuthorizedRoutes />}>
