@@ -1,9 +1,12 @@
 import React from "react";
 import AppRoutes from "./components/AppRoutes";
+import AppTheme from "./components/AppTheme";
 
 function App() {
   return (
-    <AppRoutes />
+    <AppTheme>
+      <AppRoutes />
+    </AppTheme>
   );
 }
 

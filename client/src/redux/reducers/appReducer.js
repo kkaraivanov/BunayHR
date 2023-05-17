@@ -2,6 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   isAuthorized: false,
+  themeMode: 'light'
 };
 
 const appReducer = (state = initialState, action) => {
