@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import routes from './routes';
 
 import AuthorizedRoutes from './AuthorizedRoutes';
+import Layout from '../Layout';
 
 const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -21,8 +22,10 @@ const getRoutes = (allRoutes) =>
 
 export default () => {
     return (
-        <Routes>
-            {getRoutes(routes)}
-        </Routes>
+        <Layout>
+            <Routes>
+                {getRoutes(routes)}
+            </Routes>
+        </Layout>
     )
 };
