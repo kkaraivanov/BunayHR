@@ -7,12 +7,12 @@ import { Box, Typography } from '@mui/material';
 const Home = () => {
     return (
         <>
-            <Typography>
-                Welcome from Home page
-            </Typography>
             <Box sx={{ my: 2 }}>
+                <Typography>
+                    Welcome from Home page
+                </Typography>
                 <Typography variant="body1">
-                    {[...new Array(12)]
+                    {[...new Array(20)]
                         .map(
                             () =>
                                 `Cras mattis consectetur purus sit amet fermentum.

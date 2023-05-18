@@ -18,11 +18,8 @@ export default ({ children }) => {
     return (
         <React.Fragment>
             <Header />
-            {/* <div className={classes.toolbar} /> */}
             <div className={classes.root}>
-                <Container maxWidth="lg">
-                    {children}
-                </Container>
+                {children}
             </div>
         </React.Fragment>
 
