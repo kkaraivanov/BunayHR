@@ -1,12 +1,12 @@
-import { AppBar, Toolbar } from "@mui/material"
-
+import React from "react";
+import { AppBar, Toolbar } from "@mui/material";
 
 export default () => {
 
     return (
         <AppBar
             position="fixed"
-            elevation={0}
+            elevation={1}
             color="primary"
         >
             <Toolbar>

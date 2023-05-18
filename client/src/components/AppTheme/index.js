@@ -13,7 +13,14 @@ const themeOptions = (mode) => {
         mode,
         palette: {
             
-        }
+        },
+        mixins: {
+            toolbar: {
+                minHeight: 60,
+                paddingTop: 8,
+                paddingBottom: 8
+            }
+        },
     }
 }
 const mapStateToProps = state => ({

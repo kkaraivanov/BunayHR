@@ -2,15 +2,30 @@ import React from 'react';
 
 // material icons
 import HomeIcon from '@mui/icons-material/Home';
+import { Box, Typography } from '@mui/material';
 
 const Home = () => {
-    return(
-        <h1>Welcome from Home</h1>
+    return (
+        <>
+            <Typography>
+                Welcome from Home page
+            </Typography>
+            <Box sx={{ my: 2 }}>
+                {[...new Array(12)]
+                    .map(
+                        () => `Cras mattis consectetur purus sit amet fermentum.
+    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+    Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+    Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+                    )
+                    .join('\n')}
+            </Box>
+        </>
     )
 }
 
 const Dashboard = () => {
-    return(
+    return (
         <h1>Welcome from Dashboard</h1>
     )
 }
