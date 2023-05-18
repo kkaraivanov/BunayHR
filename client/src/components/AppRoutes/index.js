@@ -21,8 +21,10 @@ const getRoutes = (allRoutes) =>
     });
 
 export default () => {
+    const items = routes.map((x) => x.items)
+    
     return (
-        <Layout>
+        <Layout items={items}>
             <Routes>
                 {getRoutes(routes)}
             </Routes>

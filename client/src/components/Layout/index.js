@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => {
     }
 })
 
-export default ({ children }) => {
+export default ({ children, items }) => {
     const classes = useStyles();
-
+    
     return (
         <React.Fragment>
-            <Header />
+            <Header items={items} />
             <div className={classes.root}>
                 {children}
             </div>

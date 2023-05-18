@@ -55,7 +55,7 @@ export default [
         },
         key: "dashboard",
         component: <Dashboard />, // example for page component Dashboard
-        protected: true,
+        protected: false,
         role: ''
     }
 ]
