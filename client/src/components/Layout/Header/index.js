@@ -5,8 +5,8 @@ export default () => {
 
     return (
         <AppBar
-            position="fixed"
-            elevation={1}
+            position="sticky"
+            elevation={0}
             color="primary"
         >
             <Toolbar>
