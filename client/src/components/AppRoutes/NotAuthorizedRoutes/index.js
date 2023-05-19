@@ -7,7 +7,7 @@ const NotAuthorizedRoutes = ({role}) => {
     const location = useLocation();
     
     useEffect(() => {
-        if(location.pathname === "/") {
+        if(role) {
             navigate(`/${role}`);
         }
     }, [role]);
