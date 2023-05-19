@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import routes from './routes';
 
 import AuthorizedRoutes from './AuthorizedRoutes';
-import Layout from '../Layout';
 import NotAuthorizedRoutes from './NotAuthorizedRoutes';
+import Layout from '../Layout';
+import routes from './routes';
 
 const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
