@@ -4,11 +4,13 @@ import { Outlet, useNavigate,  } from 'react-router-dom';
 
 const AuthorizedRoutes = ({isAuthorized}) => {
     const navigate = useNavigate();
-
+    
     useEffect(() => {
-        if(!isAuthorized) navigate('/');
+        if(!isAuthorized) {
+            navigate('/');
+        }
     }, [isAuthorized]);
-
+    
     return (<>
         {<Outlet />}
     </>);
@@ -16,6 +18,7 @@ const AuthorizedRoutes = ({isAuthorized}) => {
 
 const mapStateToProps = state => ({
     isAuthorized: state.app.isAuthorized,
+    role: state.app.role
 });
 
 export default connect(mapStateToProps)(AuthorizedRoutes)
