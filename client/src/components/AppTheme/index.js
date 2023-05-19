@@ -15,6 +15,9 @@ const themeOptions = (mode, theme) => {
             primary: {
                 main: '#fff'
             },
+            companyTitle: {
+                main: '#F2DD42'
+            },
             ...(mode === 'light'
                 ? {
                     primary: {

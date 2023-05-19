@@ -1,33 +1,20 @@
 import React from "react";
 import { useLocation, useNavigate } from 'react-router-dom'
 import { makeStyles } from "@mui/styles";
-import { 
+import {
     AppBar,
-    Box, 
-    Link, 
-    List, 
-    ListItem,  
-    ListItemText, 
-    Toolbar, 
-    Typography 
+    List,
+    ListItem,
+    ListItemText,
+    Toolbar,
 } from "@mui/material";
-import logo from '../../../assets/images/bunay-logo.png';
+
+import { CompanyLogo } from "./CompanyLogo";
 
 const useStyles = makeStyles((theme) => {
     return {
-        logo: {
-            display: 'flex',
-            alignItems: 'center',
-            padding: theme.spacing(0, 2),
-        },
-        logoContent: {
-            textTransform: 'uppercase',
-            fontSize: 34,
-            fontWeight: 600,
-            padding: theme.spacing(0, 2),
-        },
         active: {
-            color: '#F2DD42'
+            color: theme.palette.secondary.main
         },
         root: {
             display: 'flex',
@@ -40,24 +27,20 @@ export default ({ items }) => {
     const classes = useStyles();
     const history = useNavigate();
     const location = useLocation();
-    
+
     return (
         <AppBar
             position="sticky"
             elevation={0}
         >
-            <Toolbar>
-                <Link href="/" className={classes.logo}>
-                    <Box
-                        component="img"
-                        sx={{ height: 54 }}
-                        alt="Logo"
-                        src={logo}
-                    />
-                </Link>
-                <Typography variant='body2' spacing={2} className={classes.logoContent}>
-                    Bunay SA
-                </Typography>
+            <Toolbar
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <CompanyLogo />
+                
                 <List className={classes.root}>
                     {items.map((item) => (
                         <ListItem
