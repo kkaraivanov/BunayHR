@@ -6,7 +6,7 @@ import DrawerHeader from './DrawerHeader';
 
 const MainDrawer = ({ open, handleDawerOpen, window }) => {
     const theme = useTheme();
-    const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
+    const media = useMediaQuery(theme.breakpoints.down('lg'));
     const drawerContainer = window !== undefined ? () => window().document.body : undefined;
 
     const drawerHeader = useMemo(() => <DrawerHeader open={open} />, [open]);
@@ -20,7 +20,7 @@ const MainDrawer = ({ open, handleDawerOpen, window }) => {
             }}
             aria-label="drawerbox menu"
         >
-            {!matchDownMD ? (
+            {!media ? (
                 <Drawer variant="permanent" open={open}>
                     {drawerHeader}
                 </Drawer>
