@@ -18,6 +18,7 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthorized: false,
+        isDrawerOpen: false,
         role: ''
       }
     case types.SET_USER_LOGEDIN:
@@ -26,6 +27,11 @@ const appReducer = (state = initialState, action) => {
         ...state,
         isAuthorized: true,
         role: payload
+      }
+    case types.SET_DRAWER_OPEN:
+      return {
+        ...state,
+        isDrawerOpen: !state.isDrawerOpen
       }
     default:
       return state;

@@ -18,6 +18,7 @@ const themeOptions = (mode, theme) => {
             companyTitle: {
                 main: '#F2DD42'
             },
+            bgHeader: '#2C498F',
             ...(mode === 'light'
                 ? {
                     primary: {
@@ -51,6 +52,14 @@ const themeOptions = (mode, theme) => {
                     },
                 }),
         },
+        options: {
+            header: {
+                w: '95px',
+                h: '64px',
+                top: 10
+            },
+            drawerWidth: 260
+        },
         typography: {
             fontFamily: ["Comfortaa", "Caveat", 'cursive'].join(','),
             body2: {
@@ -64,6 +73,8 @@ const themeOptions = (mode, theme) => {
                         background: '#2C498F',
                         color: '#fff',
                         boxShadow: '1px 2px 6px 0px rgba(117, 158, 255,0.8)',
+                        maxHeight: '64px',
+                        minHeight: '64px',
                         [theme.breakpoints.up('lg')]: {
                             margin: '10px auto',
                             marginBottom: 0,

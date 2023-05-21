@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import AuthorizedRoutes from './AuthorizedRoutes';
 import NotAuthorizedRoutes from './NotAuthorizedRoutes';
@@ -25,17 +24,11 @@ const getRoutes = (allRoutes) =>
             )
         }
     });
+    
 
-
-const mapStateToProps = state => ({
-    isAuthorized: state.app.isAuthorized
-});
-
-export default connect(mapStateToProps)(({ isAuthorized }) => {
-    const items = routes.filter(r => r.protected === isAuthorized).map((x) => x.items)
-
+export default (() => {
     return (
-        <Layout items={items}>
+        <Layout routes={routes}>
             <Routes>
                 {getRoutes(routes)}
             </Routes>

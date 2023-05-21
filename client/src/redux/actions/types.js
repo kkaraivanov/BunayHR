@@ -1,2 +1,3 @@
 export const SET_USER_LOGOUT = 'SET_USER_LOGOUT';
 export const SET_USER_LOGEDIN = 'SET_USER_LOGEDIN';
+export const SET_DRAWER_OPEN = 'SET_DRAWER_OPEN';

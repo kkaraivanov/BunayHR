@@ -1,6 +1,6 @@
 import { Box, Typography, styled } from "@mui/material"
 import { Link } from "react-router-dom"
-import logo from '../../../../assets/images/bunay-logo.png';
+import logo from '../../../assets/images/bunay-logo.png';
 
 const Container = styled(Typography)(({ theme }) => ({
     height: 40,

@@ -1,6 +1,6 @@
 import React from "react";
-import AppRoutes from "./components/AppRoutes";
-import AppTheme from "./components/AppTheme";
+import AppRoutes from "./ui/AppRoutes";
+import AppTheme from "./ui/AppTheme";
 
 function App() {
   return (
