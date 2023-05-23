@@ -1,54 +1,15 @@
-import React from 'react';
+import React, { lazy } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// material icons
-import HomeIcon from '@mui/icons-material/Home';
-import { Box, Typography } from '@mui/material';
+import { Loadable } from '../../components';
+import AuthorizedRoutes from './AuthorizedRoutes';
+import NotAuthorizedRoutes from './NotAuthorizedRoutes';
 
-const Home = () => {
-    return (
-        <>
-            <Box sx={{ my: 2 }}>
-                <Typography>
-                    Welcome from Home page
-                </Typography>
-                <Typography variant="body1">
-                    {[...new Array(20)]
-                        .map(
-                            () =>
-                                `Cras mattis consectetur purus sit amet fermentum.
-    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-    Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-                        )
-                        .join('\n')}
-                </Typography>
-            </Box>
-        </>
-    )
-};
-
-const Service = () => {
-    return (
-        <>
-            <Box sx={{ my: 2 }}>
-                <Typography>
-                    Welcome from Service page
-                </Typography>
-                <Typography variant="body1">
-                    {[...new Array(20)]
-                        .map(
-                            () =>
-                                `Cras mattis consectetur purus sit amet fermentum.
-    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-    Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-                        )
-                        .join('\n')}
-                </Typography>
-            </Box>
-        </>
-    )
-}
+const Home = Loadable(lazy(() => import('../../pages/Home')));
+const Service = Loadable(lazy(() => import('../../pages/Service')));
+const Contact = Loadable(lazy(() => import('../../pages/Contact')));
+const Login = Loadable(lazy(() => import('../../pages/Auth/Login')));
 
 const Dashboard = () => {
     return (
@@ -62,53 +23,119 @@ const Users = () => {
     )
 }
 
-export default [
-    {
+const Logout = () => {
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch({ type: 'SET_USER_LOGOUT' })
+    },[dispatch])
+    
+    return (
+        <Navigate replace to='/' />
+    )
+}
+
+export const routes = {
+    home: {
         type: "page",
-        items: {
-            title: "Начало",
-            path: "/",
-            icon: <HomeIcon size="12px" />,
-        },
+        title: "Начало",
+        path: "/",
         key: "home",
-        component: <Home />, // example for page component Home
         protected: false,
         role: ''
     },
-    {
+    service: {
         type: "page",
-        items: {
-            title: "Услуги",
-            path: "/service",
-            icon: <HomeIcon size="12px" />,
-        },
-        key: "services",
-        component: <Service />, // example for page component Service
+        title: "Услуги",
+        path: "/service",
+        key: "service",
         protected: false,
         role: ''
     },
-    {
+    contact: {
         type: "page",
-        items: {
-            title: "Dashboard",
-            path: "/admin",
-            icon: <HomeIcon size="12px" />,
-        },
-        key: "dashboard",
-        component: <Dashboard />, // example for page component Dashboard
+        title: "Контакти",
+        path: "/contact",
+        key: "contact",
+        protected: false,
+        role: ''
+    },
+    login: {
+        type: "page",
+        title: "Вход",
+        path: "/login",
+        key: "login",
+        protected: false,
+        role: ''
+    },
+    adminDashboard: {
+        type: "page",
+        title: "Dashboard",
+        path: "/admin/dashboard",
+        key: "admin/dashboard",
         protected: true,
         role: 'admin'
     },
-    {
+    adminUsers: {
         type: "page",
-        items: {
-            title: "Потребители",
-            path: "/admin/users",
-            icon: <HomeIcon size="12px" />,
-        },
-        key: "users",
-        component: <Users />, // example for page component Users
+        title: "Потребители",
+        path: "/admin/users",
+        key: "admin/users",
         protected: true,
         role: 'admin'
+    },
+    logout: {
+        type: "page",
+        title: "Изход",
+        path: 'logout',
+        key: "logout",
+        protected: true,
+        role: 'admin'
+    }
+}
+
+export const publicRoutes = [
+    {
+        path: '/',
+        element: <NotAuthorizedRoutes />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+            },
+            {
+                path: "service",
+                element: <Service />,
+            },
+            {
+                path: "contact",
+                element: <Contact />,
+            },
+            {
+                path: "login",
+                element: <Login />,
+            },
+            {
+                path: "logout",
+                element: <Logout />,
+            }
+        ]
+    }
+]
+
+export const privateRoutes = [
+    {
+        path: '/admin',
+        element: <AuthorizedRoutes />,
+        children: [
+            {
+                path: "dashboard",
+                element: <Dashboard />,
+            },
+            {
+                path: "users",
+                element: <Users />,
+            }
+        ]
     }
 ]

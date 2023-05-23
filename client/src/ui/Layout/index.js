@@ -1,37 +1,48 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Container } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import Header from "./Header";
-import Drawer from "./Drawer";
+import { styled } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => {
-    return {
-        root: {
-            display: 'flex',
-        },
-        toolbar: theme.mixins.toolbar
-    }
-})
+import AppHeader from "./AppHeader";
+import AppDrawer from "./AppDrawer";
 
-const Layout = ({ 
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+    ({ theme, open }) => ({
+        flexGrow: 1,
+        padding: theme.spacing(2, 6),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        ...(open && {
+            padding: theme.spacing(2, 1),
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginLeft: `${theme.options.drawer.w}px`,
+        }),
+        [theme.breakpoints.down('lg')]: {
+            padding: theme.spacing(2, 4)
+        }
+    }),
+);
+
+const Layout = ({
     // component props
-    children, 
-    routes,
+    children,
     // redux actions
     dawerIsOpen,
     login,
     logout,
     // redux props
     isAuthorized,
-    isDrawerOpen 
+    isDrawerOpen
 }) => {
-    const classes = useStyles();
     const navigate = useNavigate();
-    const routeItems = routes.filter(r => r.protected === isAuthorized).map((x) => x.items)
+    //const routeItems = routes.filter(r => r.protected === isAuthorized).map((x) => x.items)
 
-    function handleDawerOpen (){
+    function handleDrawerOpen() {
         dawerIsOpen();
     };
 
@@ -48,18 +59,17 @@ const Layout = ({
 
     return (
         <React.Fragment>
-            <Header
+            <AppHeader
                 isAuthorized={isAuthorized}
-                routeItems={routeItems}
                 open={isDrawerOpen}
-                handleDawerOpen={handleDawerOpen}
+                handleDrawerOpen={handleDrawerOpen}
                 handleLogin={handleLogin}
                 handleLogout={handleLogout}
             />
-            <Drawer open={isDrawerOpen} handleDawerOpen={handleDawerOpen} />
-            <div className={classes.root}>
+            <AppDrawer open={isDrawerOpen} handleDrawerOpen={handleDrawerOpen} />
+            <Main open={isDrawerOpen}>
                 {children}
-            </div>
+            </Main>
         </React.Fragment>
 
     )

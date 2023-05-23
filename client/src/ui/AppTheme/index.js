@@ -18,7 +18,11 @@ const themeOptions = (mode, theme) => {
             companyTitle: {
                 main: '#F2DD42'
             },
-            bgHeader: '#2C498F',
+            background: {
+                default: '#F9F9F9',
+                paper: '#ebf0f9',
+                toolbar: '#2C498F'
+            },
             ...(mode === 'light'
                 ? {
                     primary: {
@@ -28,10 +32,6 @@ const themeOptions = (mode, theme) => {
                         main: '#F2DD42'
                     },
                     divider: '#2C498F',
-                    background: {
-                        default: '#F9F9F9',
-                        paper: '#F9F9F9',
-                    },
                     text: {
                         primary: '#444444',
                         secondary: '#2C498F',
@@ -58,7 +58,11 @@ const themeOptions = (mode, theme) => {
                 h: '64px',
                 top: 10
             },
-            drawerWidth: 260
+            drawer: {
+                w: 260,
+                h: 'auto',
+                anchor: 'left'
+            }
         },
         typography: {
             fontFamily: ["Comfortaa", "Caveat", 'cursive'].join(','),

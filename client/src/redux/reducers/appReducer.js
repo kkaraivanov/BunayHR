@@ -7,6 +7,8 @@ const initialState = {
   role: role,
   isDrawerOpen: false,
   themeMode: 'light',
+  headerMenu: [],
+  drawerMenu: []
 };
 
 const appReducer = (state = initialState, action) => {

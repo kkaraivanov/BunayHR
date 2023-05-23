@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Outlet, useNavigate,  } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
-const AuthorizedRoutes = ({isAuthorized}) => {
+const AuthorizedRoutes = ({isAuthorized, role}) => {
     const navigate = useNavigate();
-    
+    const location = useLocation();
+    const split =location.pathname.split(`${role}`)[1].length == 0;
+
     useEffect(() => {
-        if(!isAuthorized) {
-            navigate('/');
-        }
+        if(!isAuthorized) navigate('/');
+        if(split) navigate(`${location.pathname}/dashboard`);
     }, [isAuthorized]);
     
     return (<>

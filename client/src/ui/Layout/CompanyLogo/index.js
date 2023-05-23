@@ -18,10 +18,7 @@ export const CompanyLogo = () => (
         to='/'
         sx={{
             px: 2,
-            fontSize: {
-                xs: '2rem',
-                lg: '2rem'
-            },
+            fontSize: '2rem',
             fontWeight: {
                 xs: 600,
                 lg: 800
